@@ -20,24 +20,27 @@ class NewEventListener implements ActionListener, ItemListener
        // String num = ap.txtbox.getText();
         if(e.getActionCommand().equals("0"))
         {
-            Data d = new Data("0");
+            /*
+            Data d = new Data();
             try {
                 d.saveObject("number1.txt");
                 
             } catch (Exception meme) {
                 System.out.println(meme);
             }
+            */
             ap.txtbox.append("0");
         }
         else if(e.getActionCommand().equals("1"))
         {
+            /*
             Data d = new Data("1");
             try {
                 d.saveObject("number1.txt");
                 
             } catch (Exception meme) {
                 System.out.println(meme);
-            }
+            }*/
             ap.txtbox.append("1");
         }
         else if(e.getActionCommand().equals("2"))
@@ -72,9 +75,17 @@ class NewEventListener implements ActionListener, ItemListener
         {
             ap.txtbox.append("9");
         }
-        else if(e.getActionCommand().equals("="))
+        else if(e.getActionCommand().equals("-"))
         {
-            ap.txtbox.setText("Welcome Home");
+            ap.txtbox.setText("");
+        }
+        else if(e.getActionCommand().equals("/"))
+        {
+            ap.txtbox.setText("");
+        }
+        else if(e.getActionCommand().equals("*"))
+        {
+            ap.txtbox.setText("");
         }
         else if(e.getActionCommand().equals("+"))
         {
@@ -82,7 +93,7 @@ class NewEventListener implements ActionListener, ItemListener
             try {
                 newOne=Data.retrievObject("number1.txt"); 
                 Double number1= Double.parseDouble(newOne);
-                System.out.println( Data.addition(number1));    
+                System.out.println( Data.addition(number1,34.34));    
             } catch (Exception mem) {
               System.out.println(mem);
             }
@@ -92,6 +103,10 @@ class NewEventListener implements ActionListener, ItemListener
         else if(e.getActionCommand().equals("DEL"))
         {
             ap.txtbox.setText(" ");
+        }
+        else if(e.getActionCommand().equals("="))
+        {
+            ap.txtbox.setText("");
         }
        /* String name = ap.txtbox.getText();
         if(e.getActionCommand().equals("Send Data"))
