@@ -1,12 +1,20 @@
 package app;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.AWTEvent.*;
 import java.lang.*;
+
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 class NewEventListener implements ActionListener, ItemListener
 {
     Application ap;
+    int op,num, num2; 
+    Integer sum;
+    String one,two;
     NewEventListener(Application a)
     {
         this.ap=a;
@@ -17,30 +25,14 @@ class NewEventListener implements ActionListener, ItemListener
     }
     public void actionPerformed(ActionEvent e)
     { 
-       // String num = ap.txtbox.getText();
+       
         if(e.getActionCommand().equals("0"))
         {
-            /*
-            Data d = new Data();
-            try {
-                d.saveObject("number1.txt");
-                
-            } catch (Exception meme) {
-                System.out.println(meme);
-            }
-            */
             ap.txtbox.append("0");
         }
         else if(e.getActionCommand().equals("1"))
         {
-            /*
-            Data d = new Data("1");
-            try {
-                d.saveObject("number1.txt");
-                
-            } catch (Exception meme) {
-                System.out.println(meme);
-            }*/
+       
             ap.txtbox.append("1");
         }
         else if(e.getActionCommand().equals("2"))
@@ -77,48 +69,60 @@ class NewEventListener implements ActionListener, ItemListener
         }
         else if(e.getActionCommand().equals("-"))
         {
-            ap.txtbox.setText("");
+            one = ap.txtbox.getText();
+            ap.txtbox.setText(""); 
+            op = 3;
         }
         else if(e.getActionCommand().equals("/"))
         {
-            ap.txtbox.setText("");
+            one = ap.txtbox.getText();
+            ap.txtbox.setText(""); 
+            op = 4;
         }
         else if(e.getActionCommand().equals("*"))
         {
-            ap.txtbox.setText("");
+            one = ap.txtbox.getText();
+            ap.txtbox.setText(""); 
+            op = 2;
         }
-        else if(e.getActionCommand().equals("+"))
+         if(e.getActionCommand().equals("+"))
         {
-            String newOne;
-            try {
-                newOne=Data.retrievObject("number1.txt"); 
-                Double number1= Double.parseDouble(newOne);
-                System.out.println( Data.addition(number1,34.34));    
-            } catch (Exception mem) {
-              System.out.println(mem);
-            }
-            
-          
+            one = ap.txtbox.getText();
+            ap.txtbox.setText(""); 
+            op = 1;
         }
+        if(e.getActionCommand().equals("="))
+            {
+                System.out.println(op);
+                 num = Integer.parseInt(one.trim());
+                 two = ap.txtbox.getText();
+                 num2 = Integer.parseInt(two.trim());
+                if(op==1)
+                {
+                    sum=num+num2;
+                }
+                else if(op==2)
+                {
+                   sum = num*num2;  
+                }
+                else if(op==3)
+                {
+                    sum = num-num2;
+                }
+                else
+                {
+                    try {
+                     sum = num/num2;
+                    } catch (Exception xcp) {
+                       JOptionPane.showMessageDialog(null, xcp, "Exception", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
+                ap.txtbox.setText(sum.toString());
+                 
+            }
         else if(e.getActionCommand().equals("DEL"))
         {
             ap.txtbox.setText(" ");
         }
-        else if(e.getActionCommand().equals("="))
-        {
-            ap.txtbox.setText("");
-        }
-       /* String name = ap.txtbox.getText();
-        if(e.getActionCommand().equals("Send Data"))
-        {
-            Data d = new Data(name);
-            try {
-               d.saveObject("names.txt");
-            } catch (Exception m) {
-                System.out.println("OOPS SOMETHING WENT WRONG");
-             
-            }
-        }
-        */
     }
 }
