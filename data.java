@@ -38,10 +38,10 @@ class Data
         return add1;
     }
 
-    public static Double addition(Double number)
+    public static Double addition(Double number1, Double number2)
     {
-        Double number_one= number;
-        Double number_two=10.67;
+        Double number_one= number1;
+        Double number_two=number2;
         return number_one+number_two;
     }
 }
