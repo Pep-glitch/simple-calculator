@@ -15,7 +15,7 @@ class Application extends Frame
     Application()
     {
         super("CALCULATOR");
-        setBounds(0,0,400,400);
+        setBounds(480,150,400,400);
         setLayout(null);
 
 

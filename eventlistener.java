@@ -93,7 +93,6 @@ class NewEventListener implements ActionListener, ItemListener
         }
         if(e.getActionCommand().equals("="))
             {
-                System.out.println(op);
                  num = Integer.parseInt(one.trim());
                  two = ap.txtbox.getText();
                  num2 = Integer.parseInt(two.trim());
